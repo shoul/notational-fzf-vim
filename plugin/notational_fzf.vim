@@ -171,7 +171,7 @@ function! s:handler(lines) abort
 
    " Handle creating note.
    if keypress ==? s:create_note_key
-     let candidates = [fnameescape(s:main_dir  . '/' . query . s:ext)]
+     let candidates = [fnameescape(s:main_dir  . '/'. strftime('%Y%m%d') . query . s:ext)]
    elseif keypress ==? s:yank_key
      let pat = '\v(.{-}):\d+:'
      let hashes = join(filter(map(copy(a:lines[2:]), 'matchlist(v:val, pat)[1]'), 'len(v:val)'), s:yank_separator)
